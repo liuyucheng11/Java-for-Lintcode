@@ -1,0 +1,38 @@
+/**
+ * Definition of TreeNode:
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left, right;
+ *     public TreeNode(int val) {
+ *         this.val = val;
+ *         this.left = this.right = null;
+ *     }
+ * }
+ */
+
+public class Solution {
+    /**
+     * @param root: a TreeNode, the root of the binary tree
+     * @return: nothing
+     */
+     TreeNode temp = null;
+    public void flatten(TreeNode root) {
+        // write your code here
+         if(root==null){
+             return;
+         }
+           if(temp!=null){
+               temp.left = null;
+               temp.right = root;
+           }
+           //保存当前节点
+           temp = root;
+           //保存当前节点的右
+           TreeNode right = root.right;
+           flatten(root.left);
+           flatten(right);
+         
+         
+        
+    }
+}
